@@ -30,6 +30,15 @@ set_password(){
     echo -e "\033[1;35mpassword = ${shadowsockspwd}\033[0m"
 }
 
+# Set nameserver
+set_nameserver(){
+    clear
+    echo -e "\033[1;34mPlease enter a nameserver e.g. Cloudflare (1.1.1.1), Google (8.8.8.8):\033[0m"
+    read -p "(Default nameserver: 1.1.1.1):" shadowsocksnammeserver
+    [ -z "${shadowsocksnammeserver}" ] && shadowsocksnammeserver="1.1.1.1"
+    echo -e "\033[1;35mnameserver = ${shadowsocksnammeserver}\033[0m"
+}
+
 # Set domain
 set_domain(){
     echo -e "\033[1;34mPlease enter your domain:\033[0m"
@@ -149,6 +158,7 @@ ss_conf(){
     "server_port":443,
     "password":"$shadowsockspwd",
     "timeout":300,
+    "nameserver":"$shadowsocksnammeserver,
     "method":"aes-256-gcm",
     "plugin":"v2ray-plugin",
     "plugin_opts":"server;tls;cert=/etc/letsencrypt/live/$domain/fullchain.pem;key=/etc/letsencrypt/live/$domain/privkey.pem;host=$domain;loglevel=none"
@@ -209,12 +219,14 @@ print_ss_info(){
     echo "Your Server IP        :  ${domain} "
     echo "Your Server Port      :  443 "
     echo "Your Password         :  ${shadowsockspwd} "
+    echo "Nameserver            :  ${shadowsocksnammeserver} "
     echo "Your Encryption Method:  aes-256-gcm "
     echo "Your Plugin           :  v2ray-plugin"
     echo "Your Plugin options   :  tls;host=${domain}"
     echo "Enjoy it!"
 }
 set_password
+set_nameserver
 set_domain
 pre_install
 install_libsodium
