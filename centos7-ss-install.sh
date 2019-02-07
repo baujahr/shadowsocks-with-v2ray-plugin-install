@@ -158,7 +158,7 @@ ss_conf(){
     "server_port":443,
     "password":"$shadowsockspwd",
     "timeout":300,
-    "nameserver":"$shadowsocksnammeserver,
+    "nameserver":"$shadowsocksnammeserver",
     "method":"aes-256-gcm",
     "plugin":"v2ray-plugin",
     "plugin_opts":"server;tls;cert=/etc/letsencrypt/live/$domain/fullchain.pem;key=/etc/letsencrypt/live/$domain/privkey.pem;host=$domain;loglevel=none"
