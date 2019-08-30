@@ -13,7 +13,7 @@ fi
 
 # Version
 LIBSODIUM_VER=1.0.18
-MBEDTLS_VER=2.16.1
+MBEDTLS_VER=2.16.2
 ss_file=0
 v2_file=0
 get_latest_ver(){
